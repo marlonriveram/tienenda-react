@@ -1,10 +1,12 @@
+import { Card } from '../../Componentes/Card';
+import {Layout} from '../../Componentes/Layout'
 function Home() {
 return (
-    <>
-      <div className='bg-yellow-300'>
-       home
-      </div>
-    </>
+    <Layout className='bg-yellow-300'>
+      Home
+     <Card/>
+    </Layout>
+    
   )
 }
 

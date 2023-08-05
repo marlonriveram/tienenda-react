@@ -1,4 +1,4 @@
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom' // libreria de react router dom, que permite el enrutamiento
 import './App.css';
 import { AppRoutes } from '../../Enrutamiento';
 import { NavBar } from '../../Componentes/NavBar';

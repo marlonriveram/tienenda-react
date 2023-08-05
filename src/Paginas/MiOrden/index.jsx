@@ -1,10 +1,9 @@
+import {Layout} from '../../Componentes/Layout'
 function MiOrden() {
     return (
-        <>
-          <div className='bg-yellow-300'>
-          MiOrden
-          </div>
-        </>
+      <Layout className='bg-yellow-300'>
+        MiOrden
+      </Layout>   
       )
     }
     

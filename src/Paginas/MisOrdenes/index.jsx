@@ -1,10 +1,9 @@
+import {Layout} from '../../Componentes/Layout'
 function MisOrdenes() {
     return (
-        <>
-          <div className='bg-yellow-300'>
-          MisOrdenes
-          </div>
-        </>
+      <Layout className='bg-yellow-300'>
+        MisOrdenes
+      </Layout>
       )
     }
     
