@@ -1,8 +1,12 @@
+import { tiendaContext } from '../../Context';
+import React,{ useContext } from 'react';
 import { NavLink } from "react-router-dom"; // se importa navlink libreria de react router dom
 
 
 function NavBar () {
     const activeStyle = 'underline underline-offset-4'
+    const contador = React.useContext(tiendaContext);
+
     return(
      <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
          <ul className='flex items-center gap-3'>
@@ -88,7 +92,7 @@ function NavBar () {
              </NavLink>
              </li>
              <li>
-                🛒 0
+                🛒 {contador.contador} 
              </li>
          </ul>
     </nav>

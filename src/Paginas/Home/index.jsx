@@ -1,25 +1,30 @@
-import React, { useState,useEffect } from 'react';
+import React,{ useContext } from 'react';
+import { tiendaContext } from '../../Context';
 import { Card } from '../../Componentes/Card';
 import {Layout} from '../../Componentes/Layout';
 
-function useApi(api){ // costom hook
-  const [dataApi,setDataApi] = React.useState(null)
+// function useApi(api){ // costom hook
+//    const [dataApi,setDataApi] = React.useState(null)
 
-  // para consumir una api siempre se usa useEffect
-  useEffect(() =>{
-    fetch(api)
-    .then(respose => respose.json())
-    .then(data => setDataApi(data))
+//     // para consumir una api siempre se usa useEffect
+//     useEffect(() =>{
+//       fetch(api)
+//       .then(respose => respose.json())
+//       .then(data => setDataApi(data))
 
-  },[])
-  return(
-    {dataApi}
-  )
-}
+//   },[])
+//   return(
+//     {dataApi}
+//   )
+// }
 
 function Home() {
-  const {dataApi} = useApi('https://fakestoreapi.com/products')
-  console.log(dataApi)
+  // const {dataApi} = useApi('https://fakestoreapi.com/products');
+  const { 
+    dataApi
+  } = React.useContext(tiendaContext);
+
+ 
 return (
     <Layout className='bg-yellow-300'>
       Home
