@@ -11,7 +11,7 @@ function App() {
 return (
    <Contexto >
    <BrowserRouter>
-      <AppRoutes />
+      <AppRoutes /> 
       <NavBar />
    </BrowserRouter>
 
