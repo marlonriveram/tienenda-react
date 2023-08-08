@@ -1,4 +1,5 @@
 import { tiendaContext } from '../../Context';
+import { IoIosAddCircle } from "react-icons/io";
 import React,{ useContext } from 'react';
 
 function Card ({data}) {
@@ -10,7 +11,9 @@ function Card ({data}) {
                 <img className='w-full h-full object-cover rounded-lg' src={data.image} alt='celulares'/>
                 <div className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2'
                 onClick={() => counter.setContador(counter.contador + 1) }
-                >+</div>
+                >
+                    < IoIosAddCircle/>
+                </div>
             </figure>
             <p className='flex justify-between'>
                 <span className='text-xs font-light'>{data.title}</span>

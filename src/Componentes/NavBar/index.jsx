@@ -1,3 +1,4 @@
+import { BsFillCartDashFill } from "react-icons/bs";
 import { tiendaContext } from '../../Context';
 import React,{ useContext } from 'react';
 import { NavLink } from "react-router-dom"; // se importa navlink libreria de react router dom
@@ -91,8 +92,8 @@ function NavBar () {
                 Inicio Sesion
              </NavLink>
              </li>
-             <li>
-                🛒 {contador.contador} 
+             <li className='flex gap-2'>
+                <BsFillCartDashFill /> {contador.contador} 
              </li>
          </ul>
     </nav>
