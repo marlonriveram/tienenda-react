@@ -4,11 +4,21 @@ import React,{ useContext } from 'react';
 
 function Card ({data}) {
     const contexto = React.useContext(tiendaContext);
- 
-    const mostrarProducto = (producto) =>{
-        contexto.mostrarDetalleProducto()
-        contexto. setMostrarProducto(producto)
+ //mostrar aside detalles del producto
+    const mostrarProducto = (detalleProducto) =>{
+        contexto.mostrarDetalleProducto();
+        contexto. setMostrarProducto(detalleProducto);
+        contexto.ocultarsideMenu();
     };
+
+    const añadirProductoCarrito = (dataProducto) =>{
+        contexto.setContador(contexto.contador + 1)
+        contexto.setProductos([...contexto. productos,dataProducto])
+        contexto.mostrarsideMenu() // mostrar aside mi ordenes
+        contexto.ocultarDetalleProducto ()
+        console.log('cart :',contexto.productos)
+    };
+
     return(
         <div 
         className='bg-white cursor-pointer w-40 h-80'
@@ -18,10 +28,10 @@ function Card ({data}) {
                 <img 
                   onClick={() => mostrarProducto (data)}
                 className='w-full h-full object-cover rounded-lg' src={data.image} alt='celulares'/>
-                <div className='absolute top-0 right-0 flex justify-center items-center bg-transparent w-6 h-6 rounded-full m-2'
-                onClick={() => contexto.setContador(contexto.contador + 1) }
-                >
-                    < IoIosAddCircle color='blue' size='2rem' />
+                <div className='absolute top-0 right-0 flex justify-center items-center bg-transparent w-6 h-6 rounded-full m-2'>
+                    <IoIosAddCircle 
+                    onClick={() => añadirProductoCarrito(data)}
+                    color='blue' size='2rem' />
                 </div>
             </figure>
             <p className='flex justify-between'>

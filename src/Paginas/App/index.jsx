@@ -3,6 +3,8 @@ import './App.css';
 import { AppRoutes } from '../../Enrutamiento';
 import { NavBar } from '../../Componentes/NavBar';
 import { Contexto } from '../../Context';
+import { SideMenu } from '../../Componentes/SideMenu';
+
 
 
 
@@ -13,6 +15,7 @@ return (
    <BrowserRouter>
       <AppRoutes /> 
       <NavBar />
+      <SideMenu />
    </BrowserRouter>
 
    </Contexto>
