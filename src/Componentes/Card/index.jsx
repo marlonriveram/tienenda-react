@@ -22,7 +22,7 @@ function Card ({data}) {
 
     const renderizarIcon = (id) =>{
         const estaEnLaCard = contexto.productosCarro.filter((producto) =>(producto.id === id)).length > 0;
-        console.log(estaEnLaCard)
+        
         if(estaEnLaCard){
             return(
                 <div className='absolute top-0 right-0 flex justify-center items-center bg-transparent w-6 h-6 rounded-full m-2'>
