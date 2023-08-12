@@ -17,7 +17,7 @@ function SideMenu () {
                     color="red" size='2rem'/>
                 </div>
             </div>
-            <div className='p-4 '>
+            <div className='p-6 overflow-y-scroll'>
 
             {
                 contexto.productosCarro.map((producto) =>(
