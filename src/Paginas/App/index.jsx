@@ -5,10 +5,6 @@ import { NavBar } from '../../Componentes/NavBar';
 import { Contexto } from '../../Context';
 import { SideMenu } from '../../Componentes/SideMenu';
 
-
-
-
-
 function App() {
 return (
    <Contexto >

@@ -1,0 +1,5 @@
+.detalle-producto{
+    width: 360px;
+    height: calc(100vh - 70px);
+    top: 68px;
+}

@@ -5,18 +5,18 @@ import React,{ useContext } from 'react';
 function Card ({data}) {
     const contexto = React.useContext(tiendaContext);
  //mostrar aside detalles del producto
-    const mostrarProducto = (detalleProducto) =>{
+    const mostrarProducto = (dataProducto) =>{
         contexto.mostrarDetalleProducto();
-        contexto. setMostrarProducto(detalleProducto);
+        contexto. setMostrarProducto(dataProducto);
         contexto.ocultarsideMenu();
     };
 
-    const añadirProductoCarrito = (dataProducto) =>{
+    const añadirProductoCarrito = (event,dataProducto) =>{
         contexto.setContador(contexto.contador + 1)
-        contexto.setProductos([...contexto. productos,dataProducto])
+        contexto.setProductosCarro([...contexto.productosCarro,dataProducto])
         contexto.mostrarsideMenu() // mostrar aside mi ordenes
         contexto.ocultarDetalleProducto ()
-        console.log('cart :',contexto.productos)
+        console.log('cart :',contexto.productosCarro)
     };
 
     return(
@@ -30,7 +30,7 @@ function Card ({data}) {
                 className='w-full h-full object-cover rounded-lg' src={data.image} alt='celulares'/>
                 <div className='absolute top-0 right-0 flex justify-center items-center bg-transparent w-6 h-6 rounded-full m-2'>
                     <IoIosAddCircle 
-                    onClick={() => añadirProductoCarrito(data)}
+                    onClick={(event) => añadirProductoCarrito(event,data)}
                     color='blue' size='2rem' />
                 </div>
             </figure>
