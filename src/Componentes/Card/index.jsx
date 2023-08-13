@@ -11,7 +11,7 @@ function Card ({data}) {
         contexto. setMostrarProducto(dataProducto);
         contexto.ocultarsideMenu();
     };
-
+    // añadir productos al carrito y contarlos
     const añadirProductoCarrito = (event,dataProducto) =>{
         contexto.setContador(contexto.contador + 1)
         contexto.setProductosCarro([...contexto.productosCarro,dataProducto])

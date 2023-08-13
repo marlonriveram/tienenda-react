@@ -1,4 +1,4 @@
-import React,{ useEffect } from "react";
+import React,{ useEffect, useState } from "react";
 import { createContext} from "react";
 
 const tiendaContext = createContext();
@@ -26,10 +26,13 @@ function Contexto ({children}) {
         const ocultarsideMenu = () =>{
           setSideMenuAbierto(false);
         };
-    // mostrar Producto selecionado
+    // mostrar Producto selecionado. Detalle Producto
     const [mostrarProducto,setMostrarProducto] = React.useState({});
-    // añadir productos al carrito
+    // añadir productos al carrito . Carrito Pedidos
     const [productosCarro,setProductosCarro] = React.useState([]);
+
+    // mostrar productos en mis ordenes
+    const [orden,setOrden] = React.useState([]);
 
     function useApi(api){ // costom hook
 
@@ -65,6 +68,8 @@ function Contexto ({children}) {
             sideMenuAbierto,
             mostrarsideMenu,
             ocultarsideMenu,
+            orden,
+            setOrden,
         }}
         >
             {children}
