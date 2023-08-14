@@ -14,6 +14,7 @@ const AppRoutes = () =>{
       {path: '/mi-cuenta',element: <MiCuenta />},
       {path: '/mis-ordenes',element: <MisOrdenes/>},
       {path: '/mi-orden',element: <MiOrden />},
+      {path: '/mis-ordenes/ultimo',element: <MiOrden />},
       {path: '/*',element: <NotFound />},
     ]);
   

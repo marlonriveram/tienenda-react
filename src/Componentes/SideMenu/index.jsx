@@ -1,9 +1,11 @@
 import React,{ useContext } from 'react';
 import { tiendaContext } from '../../Context';
+import { Link } from 'react-router-dom';
 import { IoCloseCircleOutline } from "react-icons/io5";
-import { CarritoPedidos } from '../CarritoPedidos';
+import { CarritoPedido } from '../CarritoPedido';
 import PrecioTotal from '../../Utiles/index'
 import './styles.css'
+
 
 function SideMenu () {
     const contexto= React.useContext(tiendaContext);
@@ -23,7 +25,6 @@ function SideMenu () {
                 totalPrecio:PrecioTotal(contexto.productosCarro),
             };
             contexto.setOrden([...contexto.orden,agregarOrden]);
-            console.log(typeof agregarOrden)
             contexto.setProductosCarro([])
         }
    
@@ -39,10 +40,9 @@ function SideMenu () {
                 </div>
             </div>
             <div className='px-6 overflow-y-auto flex-1'>
-
             {
                 contexto.productosCarro.map((producto) =>(
-                    <CarritoPedidos 
+                    <CarritoPedido 
                     key={producto.id}
                     quitarProductoCarro={quitarProductoCarro}
                     title={producto.title}
@@ -58,10 +58,12 @@ function SideMenu () {
                         <span className='font-light'>Total:</span>
                         <span className='font-medium text-2'>${PrecioTotal(contexto.productosCarro)}</span> 
                     </p>
+                    <Link to='/mis-ordenes/ultimo'>
                     <button
-                    className='w-full bg-black py-3 text-white rounded-lg'
+                    className='w-full bg-black m-2 py-3 text-white rounded-lg'
                     onClick={() => verificarProducto ()}
                     >checkout</button>
+                    </Link>
                 </div>
         </aside>
     );

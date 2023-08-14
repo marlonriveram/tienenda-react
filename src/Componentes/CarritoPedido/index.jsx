@@ -1,5 +1,5 @@
 import { IoCloseCircleOutline } from "react-icons/io5";
-function CarritoPedidos ({title,image,price,id,quitarProductoCarro} ){
+function CarritoPedido ({title,image,price,id,quitarProductoCarro} ){
     
     return(
         <div className='flex justify-between w-full mb-3 items-center'>
@@ -11,10 +11,7 @@ function CarritoPedidos ({title,image,price,id,quitarProductoCarro} ){
             </div>
             <div className='flex items-center gap-2'>
                 <p className='text-lg font-medium'>${price}</p>
-                <IoCloseCircleOutline 
-                size='2rem' className='cursor-pointer'
-                onClick={() =>quitarProductoCarro(id)}
-                />
+                {quitarProductoCarro && <IoCloseCircleOutline  className='h-6 w-6 text-black cursor-pointer'onClick={() => quitarProductoCarro (id)}/>}
             </div>
 
         </div>
@@ -22,4 +19,4 @@ function CarritoPedidos ({title,image,price,id,quitarProductoCarro} ){
 
 }
 
-export {CarritoPedidos}
+export {CarritoPedido}

@@ -17,7 +17,7 @@ function Card ({data}) {
         contexto.setProductosCarro([...contexto.productosCarro,dataProducto])
         contexto.mostrarsideMenu() // mostrar aside mi ordenes
         contexto.ocultarDetalleProducto ()
-        console.log('cart :',contexto.productosCarro)
+ 
     };
 
     const renderizarIcon = (id) =>{
