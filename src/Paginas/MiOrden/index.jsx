@@ -7,8 +7,14 @@ import { CarritoPedido } from '../../Componentes/CarritoPedido';
 
 function MiOrden() {
       const contexto= React.useContext(tiendaContext);
-      console.log('orden:',contexto.orden.slice(-1)[0].productos)
-    return (
+      // lee la ruta de la direccion actual www.ejemplo.com/productos/ropa  => lee /productos/ropa
+      const rutaActual = window.location.pathname;
+      
+      // se usa para saber la ultima ruta de la url ------------------ 
+      let index = rutaActual.substring(rutaActual.lastIndexOf('/')+1) 
+      if(index === 'ultimo') index = contexto.orden.length -1;
+      //--------------------------------------------------------------
+      return (
       <Layout className=''>
          <div className='flex w-80 items-center relative justify-center m-8'>
           <Link 
@@ -21,7 +27,7 @@ function MiOrden() {
             
     <div className='px-6 '>
       {
-        contexto.orden.slice(-1)[0].productos.map((producto) =>(
+        contexto.orden?.[index]?.productos.map((producto) =>(
             <CarritoPedido 
             key={producto.id}
             title={producto.title}

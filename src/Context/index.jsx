@@ -4,12 +4,33 @@ import { createContext} from "react";
 const tiendaContext = createContext();
 
 function Contexto ({children}) {
-  // Contador del cantidad de productos en el carrito
-    const [contador,setContador] = React.useState(0); 
 
-    // Detalles del producto abrir/cerrar
-    const [detalleProductoAbierto,setDetalleProductoAbierto] = React.useState(false); // saber si detalle de producto esta abierta
-   
+  // -------------ESTADOS----------------------------------------------------------------
+
+  // Contador del cantidad de productos en el carrito
+  const [contador,setContador] = React.useState(0); 
+
+  // Detalles del producto abrir/cerrar
+  const [detalleProductoAbierto,setDetalleProductoAbierto] = React.useState(false); // saber si detalle de producto esta abierta
+
+  // Detalles del sideMenu abrir/cerrar
+  const [sideMenuAbierto,setSideMenuAbierto] = React.useState(false); // saber si detalle de producto esta abierta
+
+  // mostrar Producto selecionado. Detalle Producto
+  const [mostrarProducto,setMostrarProducto] = React.useState({});
+
+  // añadir productos al carrito . Carrito Pedidos
+  const [productosCarro,setProductosCarro] = React.useState([]);
+
+  // mostrar productos en mis ordenes
+  const [orden,setOrden] = React.useState([]);
+
+  // Buscar Productos
+  const [buscador,setBuscador] = React.useState('');
+
+  //---------------------------SUB ESTADOS------------------------------------------------------------------
+
+  // Sub Estado. DetalleProducto
     const mostrarDetalleProducto = () =>{
       setDetalleProductoAbierto(true);
     };
@@ -17,23 +38,16 @@ function Contexto ({children}) {
       setDetalleProductoAbierto(false);
     };
 
-        // Detalles del sideMenu abrir/cerrar
-        const [sideMenuAbierto,setSideMenuAbierto] = React.useState(false); // saber si detalle de producto esta abierta
-   
-        const mostrarsideMenu = () =>{
+  // Sub Estado. DetalleProducto
+    const mostrarsideMenu = () =>{
           setSideMenuAbierto(true);
-        };
-        const ocultarsideMenu = () =>{
+    };
+
+    const ocultarsideMenu = () =>{
           setSideMenuAbierto(false);
-        };
-    // mostrar Producto selecionado. Detalle Producto
-    const [mostrarProducto,setMostrarProducto] = React.useState({});
-    // añadir productos al carrito . Carrito Pedidos
-    const [productosCarro,setProductosCarro] = React.useState([]);
-
-    // mostrar productos en mis ordenes
-    const [orden,setOrden] = React.useState([]);
-
+    };
+   
+    // cosumo de la api
     function useApi(api){ // costom hook
 
         const [dataApi,setDataApi] = React.useState(null)
@@ -52,7 +66,10 @@ function Contexto ({children}) {
 
      const {dataApi} = useApi('https://fakestoreapi.com/products'); // llamado costom hook
     
-
+ 
+  
+     const filtrarPorTitulo =  dataApi?.filter((producto) => (producto.title.toLowerCase().includes(buscador.toLowerCase())));
+    
     return(
         <tiendaContext.Provider value={{
             dataApi,
@@ -70,6 +87,9 @@ function Contexto ({children}) {
             ocultarsideMenu,
             orden,
             setOrden,
+            buscador,
+            setBuscador,
+            filtrarPorTitulo,
         }}
         >
             {children}
