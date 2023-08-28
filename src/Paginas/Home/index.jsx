@@ -8,21 +8,30 @@ import { DetallesProducto } from '../../Componentes/DetallesProducto';
 function Home() {
   const contextoHome = React.useContext(tiendaContext);
   const showProductos = () =>{
-    if(contextoHome.filtrarPorTitulo?.length){
-      return (
-        contextoHome.filtrarPorTitulo?.map((product) =>(  // Nota: ? verifica si dataApi existe osea diferente a null o undefined para poder renderizar
-        <Card 
-         key={product.id}
-         data = {product}
-         
-        />
-     ))
-      )
+    if(contextoHome.filtrarProductos){
+      if(contextoHome.filtrarProductos.length > 0 ){
+        return(
+          contextoHome.filtrarProductos?.map((product) =>(  // Nota: ? verifica si dataApi existe osea diferente a null o undefined para poder renderizar
+          <Card 
+           key={product.id}
+            data = {product}
+          />
+      )))
+
+      }else{
+        return(
+          <div>No se encontro el producto</div>
+        )
+      }
+
     }else{
       return(
-
-        <div>No hay coincidencias</div>
-      )
+        contextoHome.dataApi?.map((product) =>(  // Nota: ? verifica si dataApi existe osea diferente a null o undefined para poder renderizar
+        <Card 
+          key={product.id}
+          data = {product}
+          />
+      )))
     }
   }
  

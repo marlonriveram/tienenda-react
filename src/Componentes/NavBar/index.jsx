@@ -6,69 +6,56 @@ import { NavLink } from "react-router-dom"; // se importa navlink libreria de re
 
 function NavBar () {
     const activeStyle = 'underline underline-offset-4'
-    const contador = React.useContext(tiendaContext);
+    const contexto = React.useContext(tiendaContext);
 
     return(
      <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
          <ul className='flex items-center gap-3'>
              <li className='font-semibold text-lg'>
              <NavLink 
-             to = '/'>
+             onClick={()=>contexto.setFiltroCategoria("")} 
+             to = '/tienenda-react/'>
                Tienda
              </NavLink>
              </li>
              <li>
-             <NavLink 
-             to = '/todo'
+             <NavLink
+               onClick={()=>contexto.setFiltroCategoria("men's clothing")} 
+             to = '/tienenda-react/ropa-hombre'
                 className={({ isActive}) =>
                 isActive ? activeStyle : undefined
               }>
-                Todo
+                Ropa Hombre
              </NavLink>
              </li>
              <li>
              <NavLink 
-             to = '/ropa'
+             onClick={()=>contexto.setFiltroCategoria("women's clothing")} 
+             to = '/tienenda-react/ropa-mujer'
                 className={({ isActive}) =>
                 isActive ? activeStyle : undefined
               }>
-                Ropa
+                Ropa Mujer
              </NavLink>
              </li>
              <li>
              <NavLink 
-             to = '/electronica'
+             onClick={()=>contexto.setFiltroCategoria("electronics")} 
+             to = '/tienenda-react/electronicos'
                 className={({ isActive}) =>
                 isActive ? activeStyle : undefined
               }>
-                Electronica
+                Electronicos
              </NavLink>
              </li>
              <li>
              <NavLink 
-             to = '/muebles'
+             onClick={()=>contexto.setFiltroCategoria("jewelery")} 
+             to = '/tienenda-react/joyeria'
                 className={({ isActive}) =>
                 isActive ? activeStyle : undefined
               }>
-                Muebles
-             </NavLink>
-             </li>
-             <li>
-             <NavLink 
-             to = '/jueguetes'
-                className={({ isActive}) =>
-                isActive ? activeStyle : undefined
-              }>
-                Jueguetes
-             </NavLink>
-             </li>
-             <li>
-             <NavLink 
-             to = '/otros'
-                className={({ isActive}) =>
-                isActive ? activeStyle : undefined
-              }>
-                Otros
+                Joyeria
              </NavLink>
              </li>
          </ul>
@@ -93,7 +80,7 @@ function NavBar () {
              </NavLink>
              </li>
              <li className='flex gap-2'>
-                <BsFillCartDashFill /> {contador.contador} 
+                <BsFillCartDashFill /> {contexto.contador} 
              </li>
          </ul>
     </nav>

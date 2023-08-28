@@ -9,14 +9,18 @@ import { NotFound } from '../Paginas/NotFound';
 // permite hacer el enrutamiento mediante el hook useRoutes
 const AppRoutes = () =>{
     let routes = useRoutes([
-      {path: '/',element: <Home />},
+      {path: '/tienenda-react/',element: <Home />},
+      {path: '/tienenda-react/ropa-hombre',element: <Home />},
+      {path: '/tienenda-react/ropa-mujer',element: <Home />},
+      {path: '/tienenda-react/electronicos',element: <Home />},
+      {path: '/tienenda-react/joyeria',element: <Home />},
       {path: '/inicio-sesion',element: <IncioSesion />}, // /?inicio-sesion' todos estos nombres los elegi uno
       {path: '/mi-cuenta',element: <MiCuenta />},
       {path: '/mis-ordenes',element: <MisOrdenes/>},
-      {path: '/mi-orden',element: <MiOrden />},
-      {path: '/mis-ordenes/ultimo',element: <MiOrden />},
-      {path: '/mis-ordenes/:id',element: <MiOrden />},
-      {path: '/*',element: <NotFound />},
+      {path: '/tienenda-react/mi-orden',element: <MiOrden />},
+      {path: '/tienenda-react/mis-ordenes/ultimo',element: <MiOrden />},
+      {path: '/tienenda-react/mis-ordenes/:id',element: <MiOrden />},
+      {path: '/tienenda-react/*',element: <NotFound />},
     ]);
   
     return routes; // retirna la ruta

@@ -25,8 +25,13 @@ function Contexto ({children}) {
   // mostrar productos en mis ordenes
   const [orden,setOrden] = React.useState([]);
 
-  // Buscar Productos
+  // Buscar Productos. filtro por titulo
   const [buscador,setBuscador] = React.useState('');
+
+  //Filtrar Por categoria
+  const [filtroCategoria,setFiltroCategoria] = useState('');
+  // fitrar Productos
+  const [filtrarProductos,setFiltrarProductos] = useState(null);
 
   //---------------------------SUB ESTADOS------------------------------------------------------------------
 
@@ -66,10 +71,30 @@ function Contexto ({children}) {
 
      const {dataApi} = useApi('https://fakestoreapi.com/products'); // llamado costom hook
     
- 
   
-     const filtrarPorTitulo =  dataApi?.filter((producto) => (producto.title.toLowerCase().includes(buscador.toLowerCase())));
+     const filtrarPorTitulo = (dataApi,buscador) => dataApi?.filter((producto) => (producto.title.toLowerCase().includes(buscador.toLowerCase())));
+     const filtrarPorCategoria = (dataApi,filtroCategoria) => dataApi?.filter((producto) =>(producto.category === filtroCategoria))
+
+     // tipo de filtro a aplicar 
+     const tipoFiltro = (filtroPor,dataApi,buscador,filtroCategoria)=>{
+      if(filtroPor === 'porTitulo'){return filtrarPorTitulo(dataApi,buscador)}
+      if(filtroPor === 'porCategoria'){return filtrarPorCategoria(dataApi,filtroCategoria)}
+      if(filtroPor === 'porCategoriaYTitulo'){return filtrarPorCategoria(dataApi,filtroCategoria).filter((producto) =>(producto.title.toLowerCase().includes(buscador.toLowerCase())))}
+      if(filtroPor === null){return dataApi}
+    }
     
+     useEffect(() =>{
+      if(buscador && !filtroCategoria) {setFiltrarProductos(tipoFiltro('porTitulo',dataApi,buscador,filtroCategoria))}
+      if(filtroCategoria && !buscador) {setFiltrarProductos(tipoFiltro('porCategoria',dataApi,buscador,filtroCategoria))}
+      if(!buscador && !filtroCategoria) {setFiltrarProductos(tipoFiltro(null,dataApi,buscador,filtroCategoria))}
+      if(filtroCategoria && buscador) {setFiltrarProductos(tipoFiltro('porCategoriaYTitulo',dataApi,buscador,filtroCategoria))}
+    },[dataApi,buscador,filtroCategoria])
+
+ 
+    
+    console.log('titulo:',!!buscador)
+    console.log('categoria:',!!filtroCategoria)
+
     return(
         <tiendaContext.Provider value={{
             dataApi,
@@ -89,7 +114,8 @@ function Contexto ({children}) {
             setOrden,
             buscador,
             setBuscador,
-            filtrarPorTitulo,
+            filtrarProductos,
+            setFiltroCategoria,
         }}
         >
             {children}

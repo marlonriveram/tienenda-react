@@ -18,7 +18,7 @@ function MiOrden() {
       <Layout className=''>
          <div className='flex w-80 items-center relative justify-center m-8'>
           <Link 
-           to = '/mis-ordenes'
+           to = '/tienenda-react/mis-ordenes'
            className='absolute left-0'>
            <VscChevronLeft className='h-6 w-6 text-black cursor-pointer'/>
           </Link>

@@ -26,6 +26,7 @@ function SideMenu () {
             };
             contexto.setOrden([...contexto.orden,agregarOrden]);
             contexto.setProductosCarro([])
+            contexto.setContador(0);
         }
    
     return (
@@ -58,7 +59,7 @@ function SideMenu () {
                         <span className='font-light'>Total:</span>
                         <span className='font-medium text-2'>${PrecioTotal(contexto.productosCarro)}</span> 
                     </p>
-                    <Link to='/mis-ordenes/ultimo'>
+                    <Link to='/tienenda-react/mis-ordenes/ultimo'>
                     <button
                     className='w-full bg-black m-2 py-3 text-white rounded-lg'
                     onClick={() => verificarProducto ()}

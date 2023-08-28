@@ -15,7 +15,7 @@ function MisOrdenes() {
           contexto.orden?.map((orden,index) =>(
             <Link 
             key={index}
-            to ={`/mis-ordenes/${index}`}>
+            to ={`/tienenda-react/mis-ordenes/${index}`}>
             <CarritoPedidos
             precioaTotal={orden.totalPrecio}
             totalProductos={orden.totalProductos}
